@@ -1,5 +1,6 @@
 // create your App component here
 import React, { useEffect } from "react";
+import Dog from "./Dog";
 
 const fetchUrl = "https://dog.ceo/api/breeds/image/random"
 
@@ -10,18 +11,18 @@ function App(){
     function fetchDog() {
         fetch( fetchUrl )
         .then(resp => resp.json())
-        .then( dogData => console.log(dogData) )
+        .then( dogData => renderDog(dogData) )
     }
 
-    // function renderDog(dog) {
-    //     return (
-            
-    //     )
-    // }
-
+    const renderDog = dog => <img src={ dog.message } alt="A Random Dog" />
+ 
     return (
-        <p>"Loading..."</p>
+        <p> 
+            { renderDog }
+        </p>
     )
 }
 
 export default App; 
+
+// renderDog
